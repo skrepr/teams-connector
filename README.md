@@ -6,7 +6,7 @@
 <h1 align="center">Teams connector</h1>
 <div align="center">
   <a href="https://github.com/skrepr/teams-connector/releases"><img src="https://img.shields.io/github/release/skrepr/teams-connector.svg" alt="Releases"/></a><a> </a>
-  <a href="https://github.com/skrepr/teams-connector/blob/main/LICENSE"><img src="https://img.shields.io/github/license/skrepr/teams-connector" alt="LICENSE"/></a><a> </a>
+  <a href="https://github.com/skrepr/teams-connector/blob/master/LICENSE"><img src="https://img.shields.io/github/license/skrepr/teams-connector" alt="LICENSE"/></a><a> </a>
   <a href="https://github.com/skrepr/teams-connector/issues"><img src="https://img.shields.io/github/issues/skrepr/teams-connector.svg" alt="Issues"/></a><a> </a>
   <a href="https://github.com/skrepr/teams-connector/pulls"><img src="https://img.shields.io/github/issues-pr/skrepr/teams-connector.svg" alt="PR"/></a><a> </a>
   <a href="https://github.com/skrepr/teams-connector/commits"><img src="https://img.shields.io/github/commit-activity/m/skrepr/teams-connector" alt="Commits"/></a><a> </a>
