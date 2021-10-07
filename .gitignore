@@ -1,0 +1,13 @@
+/vendor/
+
+# PHPStorm
+.idea
+.idea/
+.idea/*
+
+# Composer
+composer.lock
+
+# PHPUnit
+.phpunit.result.cache
+build
