@@ -1,0 +1,40 @@
+{
+    "name": "skrepr/teams-connector",
+    "description": "A simple PHP package for sending messages to Microsoft Teams",
+    "type": "libary",
+    "keywords": ["Teams", "webhook", "Microsoft", "MS Teams", "PHP", "Card", "Section", "ActionCard"],
+    "license": "MIT",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-json": "*",
+        "php-http/discovery": "^1.14",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "authors": [
+        {
+            "name": "Evert Jan Hakvoort",
+            "email": "evertjan@hakvoort.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Skrepr\\TeamsConnector\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Skrepr\\TeamsConnector\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}

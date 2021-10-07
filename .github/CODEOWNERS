@@ -1,0 +1,5 @@
+# Review when someone opens a pull request.
+* @EJTJ3
+
+# Change in .github can affect the way the repo is managed. Because of this, team infra needs to review the changes
+.github/ @skrepr/infra
