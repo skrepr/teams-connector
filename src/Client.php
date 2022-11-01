@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Skrepr\TeamsConnector;
 
-use Http\Discovery\Exception\NotFoundException;
-use Http\Discovery\Psr18ClientDiscovery;
-use LogicException;
+use FriendsOfPHP\WellKnownImplementations\WellKnownPsr18Client;
+use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Skrepr\TeamsConnector\Exception\InvalidCredentials;
@@ -28,17 +27,9 @@ final class Client
         ClientInterface $client = null,
         RequestBuilder $requestBuilder = null
     ) {
-        if ($client === null) {
-            try {
-                $client = Psr18ClientDiscovery::find();
-            } catch (NotFoundException $e) {
-                throw new LogicException('Could not find any installed HTTP clients. Try installing a package for this list: https://packagist.org/providers/psr/http-client-implementation', 0, $e);
-            }
-        }
-
-        $this->requestBuilder = $requestBuilder ?: new RequestBuilder();
         $this->endPoint = $endPoint;
-        $this->client = $client;
+        $this->client = $client ?? new WellKnownPsr18Client();
+        $this->requestBuilder = $requestBuilder ?? new RequestBuilder();
     }
 
     public function getEndPoint(): string
@@ -47,7 +38,7 @@ final class Client
     }
 
     /**
-     * @throws \Psr\Http\Client\ClientExceptionInterface
+     * @throws ClientExceptionInterface
      */
     public function send(CardInterface $card): void
     {
