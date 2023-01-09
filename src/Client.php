@@ -51,7 +51,7 @@ final class Client
         if ($statusCode === 401 || $statusCode === 403) {
             throw new InvalidCredentials();
         } elseif ($statusCode >= 300) {
-            throw new InvalidServerResponse((string) $request->getUri(), $statusCode);
+            throw new InvalidServerResponse((string) $response->getBody(), $statusCode);
         }
 
         if ($response->getBody()->getContents() !== '1') {
