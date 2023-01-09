@@ -36,6 +36,7 @@ Then [create an incoming webhook](https://docs.microsoft.com/en-us/microsoftteam
 declare(strict_types=1);
 
 use Skrepr\TeamsConnector\Card;
+use Skrepr\TeamsConnector\CardInterface;
 use Skrepr\TeamsConnector\Client;
 
 $endPoint = 'https://...';
@@ -57,7 +58,12 @@ $teamsClient->send($card);
 declare(strict_types=1);
 
 use Skrepr\TeamsConnector\Card;
-use Skrepr\TeamsConnector\Section;
+use Skrepr\TeamsConnector\Client;
+use Skrepr\TeamsConnector\Section\Section;
+
+$endPoint = 'https://...';
+$httpClient = new \GuzzleHttp\Client();
+$teamsClient = new Client($endPoint, $httpClient);
 
 $card = new Card('Larry Bryant created a new task');
 
@@ -68,6 +74,8 @@ $section = (new Section('![TestImage](https://47a92947.ngrok.io/Content/Images/d
     ->addFact('Due date', 'Mon May 01 2017 17:07:18 GMT-0700 (Pacific Daylight Time)');
 
 $card->addSection($section);
+
+$teamsClient->send($card);
 ```
 
 ### Adding actions and inputs to the card
@@ -76,18 +84,26 @@ $card->addSection($section);
 
 declare(strict_types=1);
 
-use Skrepr\TeamsConnector\Card;
 use Skrepr\TeamsConnector\Actions\ActionCard;
 use Skrepr\TeamsConnector\Actions\HttpPostAction;
+use Skrepr\TeamsConnector\Card;
+use Skrepr\TeamsConnector\Client;
 use Skrepr\TeamsConnector\Inputs\TextInput;
 
+$endPoint = 'https://...';
+$httpClient = new \GuzzleHttp\Client();
+$teamsClient = new Client($endPoint, $httpClient);
+
 $card = new Card('Larry Bryant created a new task');
+$card->setText('Yes, he did');
 
 $actionCard = (new ActionCard('Add a comment'))
     ->addInput(new TextInput('comment', 'Add a comment here for this task'))
     ->addAction(new HttpPostAction('Add comment', 'http://...'));
 
 $card->addPotentialAction($actionCard);
+
+$teamsClient->send($card);
 ```
 
 ### HTTP Clients
