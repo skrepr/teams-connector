@@ -1,7 +1,7 @@
 {
     "name": "skrepr/teams-connector",
     "description": "A simple PHP package for sending messages to Microsoft Teams",
-    "type": "libary",
+    "type": "library",
     "keywords": ["Teams", "webhook", "Microsoft", "MS Teams", "PHP", "Card", "Section", "ActionCard"],
     "license": "MIT",
     "require": {
