@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Skrepr\TeamsConnector;
 
-use FriendsOfPHP\WellKnownImplementations\WellKnownPsr18Client;
+use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
@@ -28,7 +28,7 @@ final class Client
         RequestBuilder $requestBuilder = null
     ) {
         $this->endPoint = $endPoint;
-        $this->client = $client ?? new WellKnownPsr18Client();
+        $this->client = $client ?? Psr18ClientDiscovery::find();
         $this->requestBuilder = $requestBuilder ?? new RequestBuilder();
     }
 

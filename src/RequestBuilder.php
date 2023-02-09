@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Skrepr\TeamsConnector;
 
-use FriendsOfPHP\WellKnownImplementations\WellKnownPsr17Factory;
+use Http\Discovery\Psr17Factory;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -25,10 +25,8 @@ final class RequestBuilder
         RequestFactoryInterface $requestFactory = null,
         StreamFactoryInterface $streamFactory = null
     ) {
-        $psr17Factory = new WellKnownPsr17Factory();
-
-        $this->streamFactory = $streamFactory ?? $psr17Factory;
-        $this->requestFactory = $requestFactory ?? $psr17Factory;
+        $this->streamFactory = $streamFactory ?? new Psr17Factory();
+        $this->requestFactory = $requestFactory ?? ($this->streamFactory instanceof RequestFactoryInterface ? $this->streamFactory : new Psr17Factory());
     }
 
     /**
